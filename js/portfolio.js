@@ -181,11 +181,13 @@ async function hydrateGithub() {
 
     document.querySelector("[data-public-repos]").textContent = String(repos.length);
     document.querySelector("[data-top-stars]").textContent = String(topRepo?.stargazers_count || 0);
-    document.querySelector("[data-current-signal]").textContent = latestRepo?.name?.replace(/-/g, " ") || "Public GitHub activity";
+    const currentSignal = document.querySelector("[data-current-signal]");
+    if (currentSignal) currentSignal.textContent = latestRepo?.name?.replace(/-/g, " ") || "Public GitHub activity";
     status.textContent = "Live from GitHub public API";
   } catch (error) {
     status.textContent = "Using curated public snapshot";
-    document.querySelector("[data-current-signal]").textContent = "Public project snapshot";
+    const currentSignal = document.querySelector("[data-current-signal]");
+    if (currentSignal) currentSignal.textContent = "Public project snapshot";
   } finally {
     renderRepos();
   }
@@ -229,6 +231,16 @@ function setupNavigation() {
       document.querySelectorAll("[data-nav-link]").forEach((item) => item.classList.remove("active"));
       link.classList.add("active");
       sidebar.classList.remove("open");
+    });
+  });
+}
+
+function setupLightweightTracking() {
+  document.querySelectorAll("[data-track='cv']").forEach((link) => {
+    link.addEventListener("click", () => {
+      const ping = new Image();
+      ping.decoding = "async";
+      ping.src = `https://hits.sh/pritom007.github.io/cv-download.svg?${Date.now()}`;
     });
   });
 }
@@ -297,5 +309,6 @@ renderRepos();
 setupFilters();
 setupAnswers();
 setupNavigation();
+setupLightweightTracking();
 setupCanvas();
 hydrateGithub();

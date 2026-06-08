@@ -75,12 +75,13 @@ button {
   width: 320px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 18px;
   padding: 28px;
   border-right: 1px solid var(--line);
   background: var(--sidebar);
   backdrop-filter: blur(18px);
   box-shadow: var(--shadow);
+  overflow-y: auto;
 }
 
 .profile-block {
@@ -161,11 +162,22 @@ button {
 }
 
 .sidebar-card {
-  margin-top: auto;
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: linear-gradient(135deg, rgba(72, 215, 200, 0.12), rgba(77, 140, 255, 0.1));
+}
+
+.analytics-card {
+  margin-top: auto;
+  display: block;
+}
+
+.analytics-card img,
+.visitor-stat img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .sidebar-card span,
