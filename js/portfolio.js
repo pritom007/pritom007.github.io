@@ -251,9 +251,11 @@ function setupCanvas() {
   let width = 0;
   let height = 0;
   let points = [];
+  let frameId = 0;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function resize() {
-    const ratio = window.devicePixelRatio || 1;
+    const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
     width = window.innerWidth;
     height = window.innerHeight;
     canvas.width = width * ratio;
@@ -261,7 +263,7 @@ function setupCanvas() {
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-    const count = Math.min(80, Math.max(36, Math.floor(width / 18)));
+    const count = Math.min(60, Math.max(30, Math.floor(width / 24)));
     points = Array.from({ length: count }, (_, index) => ({
       x: (index * 131) % width,
       y: (index * 83) % height,
@@ -280,8 +282,11 @@ function setupCanvas() {
     });
     for (let i = 0; i < points.length; i += 1) {
       for (let j = i + 1; j < points.length; j += 1) {
-        const distance = Math.hypot(points[i].x - points[j].x, points[i].y - points[j].y);
-        if (distance < 130) {
+        const dx = points[i].x - points[j].x;
+        const dy = points[i].y - points[j].y;
+        const squaredDistance = dx * dx + dy * dy;
+        if (squaredDistance < 16900) {
+          const distance = Math.sqrt(squaredDistance);
           ctx.strokeStyle = `rgba(72, 215, 200, ${0.16 * (1 - distance / 130)})`;
           ctx.beginPath();
           ctx.moveTo(points[i].x, points[i].y);
@@ -296,10 +301,19 @@ function setupCanvas() {
       ctx.arc(point.x, point.y, 2, 0, Math.PI * 2);
       ctx.fill();
     });
-    requestAnimationFrame(draw);
+    if (!reduceMotion && !document.hidden) frameId = requestAnimationFrame(draw);
   }
 
-  window.addEventListener("resize", resize);
+  window.addEventListener("resize", () => {
+    resize();
+    if (reduceMotion) draw();
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && !reduceMotion) {
+      cancelAnimationFrame(frameId);
+      draw();
+    }
+  });
   resize();
   draw();
 }

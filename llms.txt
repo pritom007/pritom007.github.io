@@ -1,0 +1,32 @@
+# Pritom Kumar Mondal
+
+Pritom Kumar Mondal is a Software Development Engineer in Test (SDET), AI QA engineer, and Web3 test automation specialist.
+
+## Expertise
+
+- Web3 and blockchain quality assurance
+- Python, Pytest, Selenium, Appium, and API test automation
+- AI-assisted QA, code review, document intelligence, and quality analytics
+- CI/CD quality systems and GitHub Actions
+- Machine learning, software-defined networking, and research engineering
+
+## Professional Profile
+
+- Portfolio: https://pritom007.github.io/
+- GitHub: https://github.com/pritom007
+- LinkedIn: https://www.linkedin.com/in/pritomkm/
+- CV: https://pritom007.github.io/cv/Pritom_Kumar_Mondal.pdf
+
+## Featured Public Work
+
+- Network Traffic Classification: https://github.com/pritom007/Network-Traffic-Classification
+- AngleMate: https://github.com/pritom007/AngleMate
+- LinkedApply: https://github.com/pritom007/linkedapply
+- AI PR Review: https://github.com/pritom007/ai-pr-review
+- Ollama Chatbot: https://github.com/pritom007/ollama_chatbot
+- BioInfoML: https://github.com/pritom007/BioInfoML
+
+## Research
+
+Dynamic network traffic classification using supervised machine learning for a Docker-based SDN network:
+https://doi.org/10.1080/09540091.2020.1870437

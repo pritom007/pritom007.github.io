@@ -1,0 +1,18 @@
+{
+  "name": "Pritom Kumar Mondal - SDET, AI QA and Web3 Engineer",
+  "short_name": "Pritom Mondal",
+  "description": "Portfolio of Pritom Kumar Mondal, an SDET and AI QA engineer specializing in Web3 test automation and machine-learning research.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#07090d",
+  "theme_color": "#07090d",
+  "icons": [
+    {
+      "src": "/img/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon",
+      "purpose": "any"
+    }
+  ]
+}

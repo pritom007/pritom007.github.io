@@ -477,6 +477,7 @@ p {
 }
 
 .feature-project a,
+.research-grid a,
 .footer-links a {
   display: inline-flex;
   padding: 11px 14px;
@@ -548,6 +549,7 @@ p {
 .secondary-action:hover,
 .sidebar-actions a:hover,
 .feature-project a:hover,
+.research-grid a:hover,
 .footer-links a:hover {
   transform: translateY(-2px);
   border-color: rgba(72, 215, 200, 0.5);
